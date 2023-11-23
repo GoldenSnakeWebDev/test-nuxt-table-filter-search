@@ -14,7 +14,7 @@
                             {{ title }}
                         </p>
                         
-                        <p class="text-grey font-Poppins text-2xl not-italic">
+                        <p class="text-black font-Poppins text-2xl not-italic">
                             {{ order_value.toLocaleString() }}
                         </p>
                     </div>

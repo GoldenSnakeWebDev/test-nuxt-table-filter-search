@@ -56,7 +56,7 @@
 
                 <div class="w-full flex gap-6 mt-8">
                     <!-- customer infromaition -->
-                    <div class=" w-[calc((100%-24px)/2)] bg-white flex flex-col justify-center items-start p-6 rounded-xl">
+                    <div class=" w-[calc((100%-24px)/2)] bg-white flex flex-col justify-center items-start p-6 rounded-xl gap3 shadow-custom">
                         <div class="flex flex-col gap-8 justify-center items-start self-stretch">
                             <div class="flex gap-8 items-center self-stretch">
                                 <p class="w-full text-black font-Poppins font-semibold text-xl">Customer Information</p>
@@ -70,7 +70,7 @@
                                 <div class="w-full flex flex-col gap-2">
                                     <div class="flex justify-between items-center self-stretch">
                                         <div class="flex items-center gap-3">
-                                            <p class="text-grey font-Poppins font-semibold text-base">{{ first_name }} {{ surname }}</p>
+                                            <p class="text-black font-Poppins font-semibold text-base">{{ first_name }} {{ surname }}</p>
                                             <img v-if="account_locked" src="/img/lock 01.svg" alt="lock"/>
                                             <img v-else src="/img/lock 02.svg" alt="unlock"/>
                                         </div>
@@ -164,7 +164,7 @@
                     <div class="w-[calc((100%-24px)/2)] flex flex-col gap-8">
                         <div class="flex gap-6">
                             <!-- net margin -->
-                            <div class="w-[calc((100%-24px)/2)] bg-white flex flex-col justify-center items-start p-6 rounded-xl shadow-custom">
+                            <div class="w-[calc((100%-24px)/2)] bg-white flex flex-col justify-center items-start p-6 rounded-xl shadow-custom gap-6">
                                 <div class="flex justify-between items-start self-stretch">
                                     <p class=" font-Poppins font-semibold text-black text-base">Net Margin</p>
                                     <div class="flex p-2 justify-center items-center gap-2.5 rounded-full bg-[#00D395]">
@@ -172,11 +172,11 @@
                                     </div>
                                 </div>
 
-                                <div class="flex items-center self-stretch gap-[10px] font-Poppins font-semibold text-grey text-[28px]">
+                                <div class="flex items-center self-stretch gap-[10px] font-Poppins font-semibold text-black text-[28px]">
                                     {{ cur_price }}
                                 </div>
 
-                                <div class="flex flex-col justify-center items-center self-stretch gap-2">
+                                <div class="flex justify-center items-center self-stretch gap-2">
                                     <p class="font-Poppins font-medium text-grey text-sm">View more</p>
                                     <img src="/img/arrow-right.svg" alt="arrow right">
                                 </div>
@@ -184,14 +184,14 @@
                             </div>
                             <!-- recent transaction -->
                             <div class="w-[calc((100%-24px)/2)] flex p-6 flex-col justify-center items-center rounded-xl bg-white shadow-custom">
-                                <div class="flex justify-center self-stretch gap-3">
-                                    <p class=" font-Poppins font-semibold text-grey text-base">
+                                <div class="flex items-start self-stretch gap-3">
+                                    <p class=" font-Poppins font-semibold text-black text-base">
                                         Recent Transactions
                                     </p>
                                 </div>
 
-                                <div class="flex pt-8 flex-col items-start self-stretch gap-2">
-                                    <div class="w-full">
+                                <div class="flex pt-6 flex-col items-start self-stretch gap-2">
+                                    <div class="w-full flex">
                                         <div class=" w-[50%] flex py-1 pl-2 items-start gap-[72px] rounded-s bg-[#F2F2F2]">
                                             <p class=" font-medium font-Poppins text-black text-sm">Amount</p>
                                         </div>
@@ -204,32 +204,35 @@
                                     </div>
 
                                     <div class="w-full flex flex-col gap-2 px-2">
-                                        <div class="flex items-start justify-between" v-for="(transaction, index) in recent_transaction" :key="index">
-                                            <div class="flex">
-                                                <div class=" w-[calc((100%-16px)/2)] flex flex-col justify-center items-start gap-2">
-                                                    <p class=" font-Poppins font-normal text-black text-sm">$ {{ transaction.amount.toLocaleString() }} </p>
+                                        <div class="flex items-start" v-for="(transaction, index) in recent_transaction" :key="index">
+                                            <div class=" w-[calc((100%)/2)] flex flex-col justify-center items-start gap-2">
+                                                <p class=" font-Poppins font-normal text-black text-sm"> {{ transaction.amount.toLocaleString('en-US', {style: 'currency', currency: 'USD'}) }} </p>
+                                            </div>
+                                            <div class="w-[50%] flex justify-between">
+
+                                                <div class="flex justify-between">
+                                                    <div class="flex gap-2" v-if="transaction.status == 'Success'">
+                                                        <div class="w-2 h-2 rounded-[100px] bg-[#00D395]"></div>
+                                                        <div class="text-[#00D395] font-Poppins font-medium text-sm">Success</div>
+                                                    </div>
+                                                    <div class="flex gap-2" v-if="transaction.status == 'Declined'">
+                                                        <div class="w-2 h-2 rounded-[100px] bg-[#Fa4B4B]"></div>
+                                                        <div class="text-[#Fa4B4B] font-Poppins font-medium text-sm">Declined</div>
+                                                    </div>
+                                                    <div class="flex gap-2" v-if="transaction.status == 'Pending'">
+                                                        <div class="w-2 h-2 rounded-[100px] bg-[#FF8A00]"></div>
+                                                        <div class="text-[#FF8A00] font-Poppins font-medium text-sm">Pending</div>
+                                                    </div>
                                                 </div>
-                                                <div class="flex gap-2" v-if="transaction.status == 'Success'">
-                                                    <div class="w-2 h-2 rounded-[100px] bg-[#00D395]"></div>
-                                                    <div class="text-[#00D395] font-Poppins font-medium text-sm">Success</div>
-                                                </div>
-                                                <div class="flex gap-2" v-if="transaction.status == 'Declined'">
-                                                    <div class="w-2 h-2 rounded-[100px] bg-[#Fa4B4B]"></div>
-                                                    <div class="text-[#Fa4B4B] font-Poppins font-medium text-sm">Declined</div>
-                                                </div>
-                                                <div class="flex gap-2" v-if="transaction.status == 'Peding'">
-                                                    <div class="w-2 h-2 rounded-[100px] bg-[#FF8A00]"></div>
-                                                    <div class="text-[#FF8A00] font-Poppins font-medium text-sm">Pending</div>
+                                                <div class="w-5 h-5 justify-center items-center flex">
+                                                    <img src="/img/arrow-square-right.svg" alt="arrow square right">
                                                 </div>
                                             </div>
 
-                                            <div class="w-5 h-5 justify-center items-center flex">
-                                                <img src="/img/arrow-square-right.svg" alt="arrow square right">
-                                            </div>
 
                                         </div>
-                                        <div class="flex flex-col justify-center items-center self-stretch gap-2 ">
-                                            <p class="font-Poppins font-medium text-grey text-sm">View more</p>
+                                        <div class="flex justify-center items-center self-stretch gap-2 ">
+                                            <p class="font-Poppins font-medium text-grey text-sm">View all</p>
                                             <img src="/img/arrow-right.svg" alt="arrow right">
                                         </div>
                                     </div>
@@ -269,7 +272,6 @@
 
                 </div>
 
-                <orders-table/>
             </div>
 
         </div>
@@ -285,6 +287,7 @@
             components: { OrderCard, HeaderBar, Apex },
             async fetch() {
                 this.order_card_data = await this.$axios.$get('/mock data/orderData.json');
+                console.log(this.order_card_data);
                 const customer_info = await this.$axios.$get('/mock data/customer_info.json');
 
                 this.account_locked= customer_info.account_locked;
@@ -324,13 +327,12 @@
                     last_active:"",
                     messages:130,
                     mobile_number:'',
-                    order_card_data: this.order_card_data,
+                    order_card_data: [],
                     recent_transaction:[],
                     registed:'',
                     surname:'',
                     username:"",
                     users: 40,
-
                 };
             },
         }
