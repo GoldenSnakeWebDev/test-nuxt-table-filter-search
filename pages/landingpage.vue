@@ -272,6 +272,7 @@
 
                 </div>
 
+                <OrderTable/>
             </div>
 
         </div>
@@ -281,10 +282,10 @@
         import Apex from '../components/Apex.vue';
         import HeaderBar from '../components/HeaderBar.vue'
         import OrderCard from '../components/OrderCard.vue'
-        
+        import OrderTable from '../components/OrderTable.vue';
         export default {
             name: 'landingpage',
-            components: { OrderCard, HeaderBar, Apex },
+            components: { OrderCard, HeaderBar, Apex, OrderTable },
             async fetch() {
                 this.order_card_data = await this.$axios.$get('/mock data/orderData.json');
                 console.log(this.order_card_data);
