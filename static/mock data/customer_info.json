@@ -1,0 +1,17 @@
+{
+    "avatar":"/img/Ellipse.svg",
+    "username":"madalina.popescu@company.com",
+    "first_name":"Madalina",
+    "surname":"Popescu",
+    "account_locked": true,
+    "last_active":"21 Sep 2023, 18:25",
+    "account_type":"Business",
+    "account_detail": "28%",
+    "country":"United States",
+    "mobile_number":"+1 (706) 275-0767",
+    "address": "5073 Mark Brown Rd NE Dalton, Georgia(GA), 30721",
+    "country_flag":"/img/us.svg",
+    "registed":"21 Sep 2023, 18:25",
+    "email_marketing":"Subscribed",
+    "cur_price": "$ 1,200,539.77"
+}

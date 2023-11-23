@@ -1,0 +1,31 @@
+[
+    {
+        "title": "Total Orders",
+        "order_value":257,
+        "order_icon_url":"/img/total-order-image.svg",
+        "icon_color1": "#007FFF",
+        "icon_color2": "#BFDFFF"
+
+    },
+    {
+        "title": "Gross Revenue",
+        "order_value":38341.62,
+        "order_icon_url": "/img/hart-histogram-simple.svg",
+        "icon_color1": "#00D395",
+        "icon_color2":"#BFF4E4"
+    },
+    {
+        "title": "Avg. Order Value",
+        "order_value": 574,
+        "order_icon_url": "/img/file-upload 3.svg", 
+        "icon_color1":"#FFB100",
+        "icon_color2":"#FFFFBF"
+    },
+    {
+        "title": "Returns",
+        "order_value": 16,
+        "order_icon_url": "/img/arrow-back.svg",
+        "icon_color1":"#FA4B4B",
+        "icon_color2":"#FDDEDE"
+    }
+]
